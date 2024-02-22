@@ -3,9 +3,13 @@ document.body.onload = async function ()
 	await getContacts();
 }
 
+/**
+ * Sends a POST request to the specified URL with the provided data.
+ * @async
+ * @function post
+ */
 async function post()
 {
-	console.log("POST Called");
 	// Create a new XMLHttpRequest object
 	const xhr = new XMLHttpRequest();
 
@@ -68,11 +72,12 @@ async function post()
 	xhr.send(requestBody);
 }
 
-function get()
-{
-	
-}
-
+/**
+ * Updates a contact by sending a PUT request to the server.
+ * @async
+ * @function update
+ * @returns {Promise<void>} A promise that resolves when the update is complete.
+ */
 async function update()
 {
 	const editId = await document.getElementById("editId").value;
@@ -109,6 +114,11 @@ async function update()
 	xhr.send(requestBody);
 }
 
+/**
+ * Removes a contact from the server.
+ * @async
+ * @function remove
+ */
 async function remove()
 {
 	const deleteId = await document.getElementById("deleteId").value;
@@ -133,11 +143,25 @@ async function remove()
 	xhr.send();
 }
 
+/**
+ * Populates the delete modal with the given ID.
+ * @param {string} id - The ID to populate the delete modal with.
+ * @returns {Promise<void>} - A promise that resolves when the delete modal is populated.
+ */
 async function populateDeleteModal(id)
 {
 	document.getElementById("deleteId").value = id;
 }
 
+/**
+ * Populates the edit modal with the provided data.
+ * @param {number} id - The ID of the record.
+ * @param {string} firstName - The first name of the person.
+ * @param {string} lastName - The last name of the person.
+ * @param {string} email - The email address of the person.
+ * @param {string} phone - The phone number of the person.
+ * @returns {Promise<void>} - A promise that resolves when the modal is populated.
+ */
 async function populateEditModal(id, firstName, lastName, email, phone)
 {
 	document.getElementById("editId").value = id;
@@ -147,6 +171,10 @@ async function populateEditModal(id, firstName, lastName, email, phone)
 	document.getElementById("editPhoneNumber").value = phone;
 }
 
+/**
+ * Fetches contacts from the server and populates the contact table in the HTML.
+ * @returns {Promise<void>} A promise that resolves when the contacts are fetched and displayed.
+ */
 async function getContacts() {
 	try
 	{

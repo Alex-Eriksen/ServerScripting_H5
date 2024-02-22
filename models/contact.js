@@ -53,7 +53,7 @@ const contactSchema = new mongoose.Schema({
                 return /^[0-9]{8}$/.test(v);
             },
         },
-        message: "Phone number must be 10 digits"
+        message: "Phone number must be 8 digits"
     }
 });
 
